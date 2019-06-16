@@ -1,6 +1,7 @@
 import threading
 from tkinter import *
 from tkinter import messagebox
+
 from PIL import Image as pImage
 from PIL import ImageTk as pImageTk
 
@@ -12,43 +13,33 @@ def clear_label_poker():
     p1 = pImageTk.PhotoImage(image1)
     Other_Label1['image'] = p1
     Other_Label1.image = p1
-    Other_Label1.pack()
     Other_Label1.place(x=150 + 0 * 150, y=300)
     Other_Label2['image'] = p1
     Other_Label2.image = p1
-    Other_Label2.pack()
     Other_Label2.place(x=150 + 1 * 150, y=300)
     Other_Label3['image'] = p1
     Other_Label3.image = p1
-    Other_Label3.pack()
     Other_Label3.place(x=150 + 2 * 150, y=300)
     Other_Label4['image'] = p1
     Other_Label4.image = p1
-    Other_Label4.pack()
     Other_Label4.place(x=150 + 3 * 150, y=300)
     Other_Label5['image'] = p1
     Other_Label5.image = p1
-    Other_Label5.pack()
     Other_Label5.place(x=150 + 4 * 150, y=300)
     Self_Label1['image'] = p1
     Self_Label1.image = p1
-    Self_Label1.pack()
     Self_Label1.place(x=150 + 0 * 150, y=50)
     Self_Label2['image'] = p1
     Self_Label2.image = p1
-    Self_Label2.pack()
     Self_Label2.place(x=150 + 1 * 150, y=50)
     Self_Label3['image'] = p1
     Self_Label3.image = p1
-    Self_Label3.pack()
     Self_Label3.place(x=150 + 2 * 150, y=50)
     Self_Label4['image'] = p1
     Self_Label4.image = p1
-    Self_Label4.pack()
     Self_Label4.place(x=150 + 3 * 150, y=50)
     Self_Label5['image'] = p1
     Self_Label5.image = p1
-    Self_Label5.pack()
     Self_Label5.place(x=150 + 4 * 150, y=50)
 
 
@@ -117,7 +108,7 @@ def go_on():
     global i
     i = 1
 
-    threading.Timer(deloy, print_poker).start()
+    threading.Timer(delay, print_poker).start()
 
 
 def poker_image_index(_poker):
@@ -161,27 +152,22 @@ def print_poker():
             if i == 2:
                 Other_Label1['image'] = p1
                 Other_Label1.image = p1
-                Other_Label1.pack()
                 Other_Label1.place(x=150 + (int(i / 2) - 1) * 150, y=300)
             elif i == 4:
                 Other_Label2['image'] = p1
                 Other_Label2.image = p1
-                Other_Label2.pack()
                 Other_Label2.place(x=150 + (int(i / 2) - 1) * 150, y=300)
             elif i == 6:
                 Other_Label3['image'] = p1
                 Other_Label3.image = p1
-                Other_Label3.pack()
                 Other_Label3.place(x=150 + (int(i / 2) - 1) * 150, y=300)
             elif i == 8:
                 Other_Label4['image'] = p1
                 Other_Label4.image = p1
-                Other_Label4.pack()
                 Other_Label4.place(x=150 + (int(i / 2) - 1) * 150, y=300)
             elif i == 10:
                 Other_Label5['image'] = p1
                 Other_Label5.image = p1
-                Other_Label5.pack()
                 Other_Label5.place(x=150 + (int(i / 2) - 1) * 150, y=300)
         else:
             image_index = poker_image_index(_poker_mine[int(i / 2)])
@@ -190,33 +176,28 @@ def print_poker():
             if i == 1:
                 Self_Label1['image'] = p1
                 Self_Label1.image = p1
-                Self_Label1.pack()
                 Self_Label1.place(x=150 + int(i / 2) * 150, y=50)
             elif i == 3:
                 Self_Label2['image'] = p1
                 Self_Label2.image = p1
-                Self_Label2.pack()
                 Self_Label2.place(x=150 + int(i / 2) * 150, y=50)
             elif i == 5:
                 Self_Label3['image'] = p1
                 Self_Label3.image = p1
-                Self_Label3.pack()
                 Self_Label3.place(x=150 + int(i / 2) * 150, y=50)
             elif i == 7:
                 Self_Label4['image'] = p1
                 Self_Label4.image = p1
-                Self_Label4.pack()
                 Self_Label4.place(x=150 + int(i / 2) * 150, y=50)
             elif i == 9:
                 Self_Label5['image'] = p1
                 Self_Label5.image = p1
-                Self_Label5.pack()
                 Self_Label5.place(x=150 + int(i / 2) * 150, y=50)
         i = i + 1
 
-        threading.Timer(deloy, print_poker).start()
+        threading.Timer(delay, print_poker).start()
     else:
-        threading.Timer(deloy, print_my_point).start()
+        threading.Timer(delay, print_my_point).start()
 
 
 def real_compare_max(_poker):
@@ -266,7 +247,7 @@ def print_my_point():
     else:
         var_point_player_mine.set('牛数：%d' % point_mine)
 
-    threading.Timer(deloy, print_other_point).start()
+    threading.Timer(delay, print_other_point).start()
 
 
 def print_other_point():
@@ -281,27 +262,22 @@ def print_other_point():
         if i == 0:
             Other_Label1['image'] = p1
             Other_Label1.image = p1
-            Other_Label1.pack()
             Other_Label1.place(x=150, y=300)
         elif i == 1:
             Other_Label2['image'] = p1
             Other_Label2.image = p1
-            Other_Label2.pack()
             Other_Label2.place(x=150 + i * 150, y=300)
         elif i == 2:
             Other_Label3['image'] = p1
             Other_Label3.image = p1
-            Other_Label3.pack()
             Other_Label3.place(x=150 + i * 150, y=300)
         elif i == 3:
             Other_Label4['image'] = p1
             Other_Label4.image = p1
-            Other_Label4.pack()
             Other_Label4.place(x=150 + i * 150, y=300)
         elif i == 4:
             Other_Label5['image'] = p1
             Other_Label5.image = p1
-            Other_Label5.pack()
             Other_Label5.place(x=150 + i * 150, y=300)
 
     global point_other
@@ -311,7 +287,7 @@ def print_other_point():
     else:
         var_point_player_other.set('牛数：%d' % point_other)
 
-    threading.Timer(deloy, compare).start()
+    threading.Timer(delay, compare).start()
 
 
 def compare():
@@ -364,7 +340,7 @@ if __name__ == '__main__':
 
     # 是否开始游戏
     is_playing = True
-    deloy = 0.3
+    delay = 0.3
 
     window = Tk()
     # 窗口标题
@@ -376,9 +352,7 @@ if __name__ == '__main__':
     win_width = 1050
     win_height = 750
 
-    global x
     x = (screen_width - win_width) / 2
-    global y
     y = (screen_height - win_height) / 2
 
     # 窗口居中显示到屏幕
