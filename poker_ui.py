@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 
 import pygame as pygame
+import win32api
 from PIL import Image as pImage
 from PIL import ImageTk as pImageTk
 
@@ -396,7 +397,7 @@ if __name__ == '__main__':
     window.geometry('%dx%d+%d+%d' % (win_width, win_height, x, y))
 
     # 禁止调整窗口大小
-    window.resizable(width=False, height=True)
+    window.resizable(width=False, height=False)
 
     # 背景图片
     image = pImage.open(".\\resource\\background.jpg")
