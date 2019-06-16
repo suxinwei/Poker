@@ -1,9 +1,5 @@
 import random
 
-
-
-
-
 # 列表生成式，牌大小
 ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 # 牌花色
@@ -12,7 +8,7 @@ suits = ['♥', '♦', '♠', '♣']
 
 def init_poker():
     global sum_poker
-    sum_poker = [i+j for i in ranks for j in suits]
+    sum_poker = [i + j for i in ranks for j in suits]
 
 
 # 自定义一个函数
@@ -45,7 +41,7 @@ def poker_point(poker):
                     if sum(poker) - _sum > 10:
                         if (sum(poker) - _sum) % 10 == 0:
                             return 10
-                        else :
+                        else:
                             return sum(poker) % 10
                     else:
                         return sum(poker) - _sum
@@ -55,7 +51,7 @@ def poker_point(poker):
 def sum_value(poker):
     L = []
     for i in poker:
-        if i[:-1] in ['10','J','Q','K']:
+        if i[:-1] in ['10', 'J', 'Q', 'K']:
             num = 10
         elif i[0] == 'A':
             num = 1
@@ -67,13 +63,13 @@ def sum_value(poker):
 
 # 没牛比大小
 # 选出五张中最大的比大小
-def compare(self, computer):
+def compare(self, computer, bet=3):
     if self > computer:
         print('电脑小，分数加三')
-        return 3
+        return bet
     elif self < computer:
         print('电脑大，分数减三')
-        return -3
+        return -bet
     else:
         print('一样大，分数不变')
         return 0
@@ -94,6 +90,7 @@ if __name__ == '__main__':
         if str == '开始游戏':
             print('开始发牌')
 
+            init_poker()
             _poker_self = random_poker()
             poker_self = sum_value(_poker_self)
             print('你的牌：%s' % poker_self)
