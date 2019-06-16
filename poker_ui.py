@@ -83,7 +83,7 @@ def play():
     global is_playing
     is_playing = False
     var_play_or_continue_btn.set('继续游戏')
-    score_label.place(x=600, y=795)
+    score_label.place(x=180, y=520)
     var_score.set(SCORE)
     global score
     score = SCORE
@@ -155,23 +155,23 @@ def print_poker():
             if i == 2:
                 Other_Label1['image'] = poker_back
                 Other_Label1.image = poker_back
-                Other_Label1.place(x=150 + (int(i / 2) - 1) * 150, y=300)
+                Other_Label1.place(x=180 + (int(i / 2) - 1) * 150, y=230)
             elif i == 4:
                 Other_Label2['image'] = poker_back
                 Other_Label2.image = poker_back
-                Other_Label2.place(x=150 + (int(i / 2) - 1) * 150, y=300)
+                Other_Label2.place(x=180 + (int(i / 2) - 1) * 150, y=230)
             elif i == 6:
                 Other_Label3['image'] = poker_back
                 Other_Label3.image = poker_back
-                Other_Label3.place(x=150 + (int(i / 2) - 1) * 150, y=300)
+                Other_Label3.place(x=180 + (int(i / 2) - 1) * 150, y=230)
             elif i == 8:
                 Other_Label4['image'] = poker_back
                 Other_Label4.image = poker_back
-                Other_Label4.place(x=150 + (int(i / 2) - 1) * 150, y=300)
+                Other_Label4.place(x=180 + (int(i / 2) - 1) * 150, y=230)
             elif i == 10:
                 Other_Label5['image'] = poker_back
                 Other_Label5.image = poker_back
-                Other_Label5.place(x=150 + (int(i / 2) - 1) * 150, y=300)
+                Other_Label5.place(x=180 + (int(i / 2) - 1) * 150, y=230)
         else:
             image_index = poker_image_index(_poker_mine[int(i / 2)])
             image1 = pImage.open(".\\poker_image\\" + image_index + ".jpg")
@@ -179,23 +179,23 @@ def print_poker():
             if i == 1:
                 Self_Label1['image'] = p1
                 Self_Label1.image = p1
-                Self_Label1.place(x=150 + int(i / 2) * 150, y=50)
+                Self_Label1.place(x=180 + int(i / 2) * 150, y=30)
             elif i == 3:
                 Self_Label2['image'] = p1
                 Self_Label2.image = p1
-                Self_Label2.place(x=150 + int(i / 2) * 150, y=50)
+                Self_Label2.place(x=180 + int(i / 2) * 150, y=30)
             elif i == 5:
                 Self_Label3['image'] = p1
                 Self_Label3.image = p1
-                Self_Label3.place(x=150 + int(i / 2) * 150, y=50)
+                Self_Label3.place(x=180 + int(i / 2) * 150, y=30)
             elif i == 7:
                 Self_Label4['image'] = poker_back
                 Self_Label4.image = poker_back
-                Self_Label4.place(x=150 + int(i / 2) * 150, y=50)
+                Self_Label4.place(x=180 + int(i / 2) * 150, y=30)
             elif i == 9:
                 Self_Label5['image'] = poker_back
                 Self_Label5.image = poker_back
-                Self_Label5.place(x=150 + int(i / 2) * 150, y=50)
+                Self_Label5.place(x=180 + int(i / 2) * 150, y=30)
         i = i + 1
 
         threading.Timer(delay, print_poker).start()
@@ -244,7 +244,7 @@ def print_my_point():
     输出我的牛数或最大数
     :return:
     '''
-    point_player_mine.place(x=900, y=100)
+    point_player_mine.place(x=920, y=100)
     print_my_rest_poker()
     global point_mine
     point_mine = poker.poker_point(poker_mine)
@@ -278,7 +278,7 @@ def print_other_point():
     输出对方的牛数或最大数
     :return:
     '''
-    point_player_other_label.place(x=900, y=350)
+    point_player_other_label.place(x=920, y=290)
     for i in range(5):
         image_index = poker_image_index(_poker_other[i])
         image1 = pImage.open(".\\poker_image\\" + image_index + ".jpg")
@@ -314,7 +314,7 @@ def compare():
     比较大小
     :return:
     '''
-    compare_result_label.place(x=win_width / 2 - 100, y=720)
+    compare_result_label.place(x=win_width / 2 - 100, y=550)
     bet = int(bet_input_entry.get())
     if point_mine is None:
         if point_other is None:
@@ -371,6 +371,13 @@ def play_music():
 if __name__ == '__main__':
     play_music()
 
+    dm = win32api.EnumDisplaySettings(None, 0)
+    dm.PelsHeight = 900
+    dm.PelsWidth = 1400
+    dm.BitsPerPel = 32
+    dm.DisplayFixedOutput = 0
+    win32api.ChangeDisplaySettings(dm, 0)
+
     SCORE = 80
 
     # 是否开始游戏
@@ -388,7 +395,7 @@ if __name__ == '__main__':
     screen_height = window.winfo_screenheight()
 
     win_width = 1080
-    win_height = 1000
+    win_height = 750
 
     x = (screen_width - win_width) / 2
     y = (screen_height - win_height) / 2
@@ -417,7 +424,7 @@ if __name__ == '__main__':
     point_player_mine = Label(window, textvariable=var_point_player_mine, fg='blue', font=(16))
 
     # 对方的牌界面
-    Label(window, text='对方的牌：', font=(14)).place(x=30, y=350)
+    Label(window, text='对方的牌：', font=(14)).place(x=30, y=290)
     Other_Label1 = Label(window)
     Other_Label2 = Label(window)
     Other_Label3 = Label(window)
@@ -428,16 +435,16 @@ if __name__ == '__main__':
     point_player_other_label = Label(window, textvariable=var_point_player_other, fg='blue', font=(16))
 
     # 赌注界面
-    Label(window, text='输入赌注：', font=(14)).place(x=30, y=600)
+    Label(window, text='输入赌注：', font=(14)).place(x=30, y=430)
     # 赌注输入
     var_bet_input = StringVar()
-    bet_input_entry = Entry(window, textvariable=var_bet_input)
-    bet_input_entry.place(x=200, y=600)
+    bet_input_entry = Entry(window, textvariable=var_bet_input, width=10)
+    bet_input_entry.place(x=180, y=430)
     bet_input_entry.config(state=DISABLED)
 
     # 开牌按钮
     show_btn = Button(window, text='开牌', command=show, width=15, height=2)
-    show_btn.place(x=win_width / 2 + 50, y=600)
+    show_btn.place(x=win_width / 2 + 50, y=430)
     show_btn.config(state=DISABLED)
 
     # 比较结果界面
@@ -445,7 +452,7 @@ if __name__ == '__main__':
     compare_result_label = Label(window, textvariable=var_compare_result, fg='red', font=('Times New Roman', 14))
 
     # 得分界面
-    Label(window, text='得分：', font=('宋体', 24)).place(x=450, y=800)
+    Label(window, text='得分：', font=(14)).place(x=30, y=530)
     var_score = StringVar()
     # 得分
     score_label = Label(window, textvariable=var_score, fg='green', font=('Times New Roman', 28))
@@ -455,11 +462,11 @@ if __name__ == '__main__':
     var_play_or_continue_btn.set('开始游戏')
     play_or_continue_btn = Button(window, textvariable=var_play_or_continue_btn, command=play_or_continue, width=15,
                                   height=2)
-    play_or_continue_btn.place(x=win_width / 2 - 150, y=900)
+    play_or_continue_btn.place(x=win_width / 2 - 150, y=660)
 
     # 结束游戏按钮
     finish_btn = Button(window, text='结束游戏', command=finish, width=15, height=2)
-    finish_btn.place(x=win_width / 2 + 50, y=900)
+    finish_btn.place(x=win_width / 2 + 50, y=660)
     finish_btn.config(state=DISABLED)
 
     window.mainloop()
