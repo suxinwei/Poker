@@ -2,6 +2,7 @@ import threading
 from tkinter import *
 from tkinter import messagebox
 
+import pygame as pygame
 from PIL import Image as pImage
 from PIL import ImageTk as pImageTk
 
@@ -343,7 +344,21 @@ def compare():
         finish_btn.config(state=NORMAL)
 
 
+def play_music():
+    '''
+     播放背景音乐
+     :return:
+     '''
+    file = r'.\\resource\\background.mp3'
+    pygame.mixer.init()
+    pygame.mixer.music.load(file)
+
+    pygame.mixer.music.play(-1)
+
+
 if __name__ == '__main__':
+    play_music()
+
     SCORE = 80
 
     # 是否开始游戏
