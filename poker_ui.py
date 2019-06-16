@@ -368,7 +368,7 @@ def play_music():
 
 
 if __name__ == '__main__':
-    # play_music()
+    play_music()
 
     SCORE = 80
 
