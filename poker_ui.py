@@ -2,8 +2,7 @@ import threading
 from tkinter import *
 from tkinter import messagebox
 
-import pygame as pygame
-import win32api
+import pygame
 from PIL import Image as pImage
 from PIL import ImageTk as pImageTk
 
@@ -318,7 +317,8 @@ def compare():
     bet = int(bet_input_entry.get())
     if point_mine is None:
         if point_other is None:
-            compare_score = poker.compare(max(real_compare_max(_poker_mine)), max(real_compare_max(_poker_other)), bet)
+            compare_score = poker.compare(max(real_compare_max(_poker_mine)),
+                                          max(real_compare_max(_poker_other)), bet)
         else:
             compare_score = poker.compare(0, point_other, bet)
     else:
@@ -333,10 +333,12 @@ def compare():
         var_compare_result.set('很遗憾，你输了，扣%d分.' % abs(compare_score))
     else:
         if point_mine is not None:
-            compare_score = poker.compare(max(real_compare_max(_poker_mine)), max(real_compare_max(_poker_other)), bet)
+            compare_score = poker.compare(max(real_compare_max(_poker_mine)),
+                                          max(real_compare_max(_poker_other)), bet)
             var_point_player_other.set(
                 '牛数：' + repr(point_other) + '，最大：' + transform(max(real_compare_max(_poker_other))))
-            var_point_player_mine.set('牛数：' + repr(point_mine) + '，最大：' + transform(max(real_compare_max(_poker_mine))))
+            var_point_player_mine.set(
+                '牛数：' + repr(point_mine) + '，最大：' + transform(max(real_compare_max(_poker_mine))))
             if compare_score > 0:
                 var_compare_result.set('恭喜你！你赢了，加%d分！' % compare_score)
             elif compare_score < 0:
@@ -370,13 +372,6 @@ def play_music():
 
 if __name__ == '__main__':
     play_music()
-
-    dm = win32api.EnumDisplaySettings(None, 0)
-    dm.PelsHeight = 900
-    dm.PelsWidth = 1400
-    dm.BitsPerPel = 32
-    dm.DisplayFixedOutput = 0
-    win32api.ChangeDisplaySettings(dm, 0)
 
     SCORE = 80
 
@@ -432,7 +427,8 @@ if __name__ == '__main__':
     Other_Label5 = Label(window)
     # 对方的牛数界面
     var_point_player_other = StringVar()
-    point_player_other_label = Label(window, textvariable=var_point_player_other, fg='blue', font=(16))
+    point_player_other_label = Label(window, textvariable=var_point_player_other, fg='blue',
+                                     font=(16))
 
     # 赌注界面
     Label(window, text='输入赌注：', font=(14)).place(x=30, y=430)
@@ -449,7 +445,8 @@ if __name__ == '__main__':
 
     # 比较结果界面
     var_compare_result = StringVar()
-    compare_result_label = Label(window, textvariable=var_compare_result, fg='red', font=('Times New Roman', 14))
+    compare_result_label = Label(window, textvariable=var_compare_result, fg='red',
+                                 font=('Times New Roman', 14))
 
     # 得分界面
     Label(window, text='得分：', font=(14)).place(x=30, y=530)
@@ -460,7 +457,8 @@ if __name__ == '__main__':
     # 开始/继续游戏按钮
     var_play_or_continue_btn = StringVar()
     var_play_or_continue_btn.set('开始游戏')
-    play_or_continue_btn = Button(window, textvariable=var_play_or_continue_btn, command=play_or_continue, width=15,
+    play_or_continue_btn = Button(window, textvariable=var_play_or_continue_btn,
+                                  command=play_or_continue, width=15,
                                   height=2)
     play_or_continue_btn.place(x=win_width / 2 - 150, y=660)
 
